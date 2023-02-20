@@ -17,7 +17,7 @@ namespace DeviceManagement.DAL.Repositories
     {
         private static DeviceClient deviceClient;
         private static RegistryManager registryManager;
-        private const string IOT_HUB_CONN_STRING = "HostName=rutujaiothub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=PucoHwtccB3vouKPrwwWki6C6hY+eHNyhODDSW20i+M=";
+        private const string IOT_HUB_CONN_STRING = "HostName=demoiothubrutuja.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=Alheyhz7c0LNxb0sye//TJGH25yXTbLdv0AvDPNJmr8=";
 
         public DeviceRepository()
         {

@@ -13,7 +13,7 @@ namespace DeviceManagement.Controllers
     public class DeviceController : Controller
     {
         static RegistryManager registryManager;
-        private const string IOT_Hub_Conn_String = "HostName=rutujaiothub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=PucoHwtccB3vouKPrwwWki6C6hY+eHNyhODDSW20i+M=";
+        private const string IOT_Hub_Conn_String = "HostName=demoiothubrutuja.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=Alheyhz7c0LNxb0sye//TJGH25yXTbLdv0AvDPNJmr8=";
         
         public DeviceController()
         {
