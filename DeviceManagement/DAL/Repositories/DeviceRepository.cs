@@ -17,7 +17,7 @@ namespace DeviceManagement.DAL.Repositories
     {
         private static DeviceClient deviceClient;
         private static RegistryManager registryManager;
-        private const string IOT_HUB_CONN_STRING = "HostName=demoiothubrutuja.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=Alheyhz7c0LNxb0sye//TJGH25yXTbLdv0AvDPNJmr8=";
+        private const string IOT_HUB_CONN_STRING = "HostName=demoiothubrutuja.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=VibIqKxix5SDrH0OSSrs/AMsc4ihGGafWPKZIXA4C6o=";
 
         public DeviceRepository()
         {
@@ -184,7 +184,7 @@ namespace DeviceManagement.DAL.Repositories
         }
 
 
-        public static async Task<string> AddDeviceAsync(string deviceId, ReportedProperties reportedProperties)
+        public static async Task<string> AddDeviceAsync(string deviceId)
         {
             if(string.IsNullOrEmpty(deviceId)) 
             {
@@ -196,7 +196,6 @@ namespace DeviceManagement.DAL.Repositories
             Console.WriteLine("New Device");
 
             device = await registryManager.AddDeviceAsync(new Device(deviceId));
-            await UpdateReportedProperties(deviceId, reportedProperties);
 
             return await GetDeviceTwinAsync(deviceId);
         }

@@ -13,25 +13,14 @@ namespace DeviceManagement.Controllers
     public class DeviceController : Controller
     {
         static RegistryManager registryManager;
-        private const string IOT_Hub_Conn_String = "HostName=demoiothubrutuja.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=Alheyhz7c0LNxb0sye//TJGH25yXTbLdv0AvDPNJmr8=";
+        private const string IOT_Hub_Conn_String = "HostName=demoiothubrutuja.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=VibIqKxix5SDrH0OSSrs/AMsc4ihGGafWPKZIXA4C6o=";
         
         public DeviceController()
         {
             registryManager = RegistryManager.CreateFromConnectionString(IOT_Hub_Conn_String);
         }
 
-        /// <summary>
-        /// Get Device Twin of a particular device with deviceId
-        /// </summary>
-        /// <param name="deviceId"></param>
-        /// <returns> Task<string> </returns>
-        [HttpGet]
-        [Route("GetDevice")]
-        public async Task<string> GetDeviceTwin(string deviceId)
-        { 
-            var result = await DeviceRepository.GetDeviceTwinAsync(deviceId);
-            return result;
-        }       
+            
 
         /// <summary>
         /// Add device with deviceId
@@ -41,9 +30,9 @@ namespace DeviceManagement.Controllers
         /// <returns> Task<string> </returns>
         [HttpPost]
         [Route("AddDevice")]
-        public async Task<string> AddDevice(string deviceId, ReportedProperties reportedProperties)
+        public async Task<string> AddDevice(string deviceId)
         {
-            var result = await DeviceRepository.AddDeviceAsync(deviceId, reportedProperties);
+            var result = await DeviceRepository.AddDeviceAsync(deviceId);
             if(result != null)
             {
                 return result;
@@ -89,6 +78,21 @@ namespace DeviceManagement.Controllers
             var result = await DeviceRepository.SendMessageToIoTHub(deviceId, reportedProperties);
             return result;
         }
+
+
+        /// <summary>
+        /// Get Device Twin of a particular device with deviceId
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <returns> Task<string> </returns>
+        [HttpGet]
+        [Route("GetDevice")]
+        public async Task<string> GetDeviceTwin(string deviceId)
+        {
+            var result = await DeviceRepository.GetDeviceTwinAsync(deviceId);
+            return result;
+        }
+
 
         /// <summary>
         /// List all available device twin 
